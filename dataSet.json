@@ -1,0 +1,618 @@
+[
+  {
+    "id" : "stemThickness",
+    "type" : "vRange",
+    "min" : 10,
+    "max" : 300,
+    "littleName" : "s.t."
+  },
+  {
+    "id" : "stemConcave",
+    "type" : "conditional",
+    "optionClosed" : {
+      "value" : "no",
+      "probability": 0.33
+    },
+    "optionOpen" : {
+      "value" : "yes",
+      "result" : [
+          {
+            "id" : "stemConcaveSub",
+            "type" : "vRange",
+            "min" : 0.4,
+            "max" : 1.4,
+            "relTo": "stemThickness"
+          }
+        ]
+    }
+  },
+
+
+
+  {
+    "id" : "stContrast",
+    "type" : "conditional",
+    "optionClosed" : {
+      "value" : "no",
+      "probability": 0.5
+    },
+    "optionOpen" : {
+      "value" : "yes",
+      "result" : [
+          {
+            "id" : "contrastedSt",
+            "type" : "vRange",
+            "min" : 0.2,
+            "max" : 2,
+            "relTo" : "stemThickness"
+          }
+        ]
+    }
+  },
+
+  {
+    "id" : "axis",
+    "type" : "conditional",
+    "optionClosed" : {
+      "value" : "no",
+      "probability": 0.5
+    },
+    "optionOpen" : {
+      "value" : "yes",
+      "result" : [
+          {
+            "id" : "axisExtent",
+            "type" : "vRange",
+            "append" : "°",
+            "min" : -90,
+            "max" : 90
+          }
+        ]
+    }
+  },
+
+  {
+    "id" : "slant",
+    "type" : "conditional",
+    "optionClosed" : {
+      "value" : "no",
+      "probability": 0.5
+    },
+    "optionOpen" : {
+      "value" : "yes",
+      "result" : [
+          {
+            "id" : "slantExtent",
+            "type" : "vRange",
+            "append" : "°",
+            "min" : -50,
+            "max" : 50
+          }
+        ]
+    }
+  },
+
+  {
+    "id" : "xHeight",
+    "type" : "vRange",
+    "min" : 400,
+    "max" : 800,
+    "littleName" : "x.h."
+  },
+
+  {
+    "id" : "capHeight",
+    "type" : "vRange",
+    "min" : 1,
+    "max" : 2,
+    "relTo" : "xHeight"
+  },
+
+  {
+    "id" : "descenderSize",
+    "type" : "vRange",
+    "min" : 0,
+    "max" : 1,
+    "relTo" : "xHeight"
+  },
+
+  {
+    "id" : "ascenderSize",
+    "type" : "vRange",
+    "min" : 0,
+    "max" : 1,
+    "relTo" : "xHeight",
+    "littleName" : "ascender"
+  },
+
+  {
+    "id" : "serif",
+    "type" : "conditional",
+    "optionClosed" : {
+      "value" : "no",
+      "probability": 0.5
+    },
+    "optionOpen" : {
+      "value" : "yes",
+      "result" : [
+        {
+          "id" : "serifWidth",
+          "type" : "vRange",
+          "min" : 1.1,
+          "max" : 2,
+          "relTo" : "stemThickness",
+          "littleName" : "s.w."
+        },
+
+        {
+          "id" : "serifHeight",
+          "type" : "vRange",
+          "min" : 0.1,
+          "max" : 0.5,
+          "relTo" : "xHeight"
+        },
+        {
+          "id" : "slabSerif",
+          "type" : "conditional",
+          "optionClosed" : {
+            "probability": 0.5
+          },
+          "optionOpen" : {
+            "result" : [
+              {
+                "id" : "serifStarting",
+                "type" : "vRange",
+                "min" : 0.1,
+                "max" : 0.45,
+                "relTo" : "xHeight"
+              },
+
+              {
+                "id" : "aSerifWidth",
+                "type" : "vRange",
+                "min" : 0.5,
+                "max" : 1.5,
+                "relTo" : "serifWidth"
+              },
+
+              {
+                "id" : "biggerWidth",
+                "type" : "conditional",
+                "optionClosed" : {
+                  "probability": 0.5
+                },
+                "optionOpen" : {
+                  "result" : []
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id" : "iDotWidth",
+    "type" : "vRange",
+    "min" : 0.8,
+    "max" : 2,
+    "relTo" : "stemThickness"
+  },
+
+  {
+    "id" : "iDotHeight",
+    "type" : "vRange",
+    "min" : 0.1,
+    "max" : 0.8,
+    "relTo" : "ascenderSize"
+  },
+
+  {
+    "id" : "ascenderSize",
+    "type" : "vRange",
+    "min" : 0,
+    "max" : 1,
+    "relTo" : "xHeight"
+  },
+  {
+    "id" : "aStory",
+    "type" : "conditional",
+    "optionClosed" : {
+      "probability": 0.5
+    },
+    "optionOpen" : {
+      "result" : []
+    }
+  },
+  {
+    "id" : "gStory",
+    "type" : "conditional",
+    "optionClosed" : {
+      "probability": 0.5
+    },
+    "optionOpen" : {
+      "result" : []
+    }
+  },
+  {
+    "id" : "width",
+    "type" : "width",
+    "possibilites" : [
+      {
+        "name" : "#1",
+        "uppercase" : [
+          {
+            "letter" : "W",
+            "min" : 13,
+            "max" : 13.9,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "M",
+            "min" : 0.9,
+            "max" : 0.95,
+            "relTo" : "W"
+          },
+          {
+            "letter" : "O",
+            "min" : 11,
+            "max" : 12,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "Q",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "O"
+          },
+          {
+            "letter" : "N",
+            "min" : 10.5,
+            "max" : 12,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "H",
+            "min" : 0.86,
+            "max" : 1,
+            "relTo" : "N"
+          },
+          {
+            "letter" : "G",
+            "min" : 0.86,
+            "max" : 0.95,
+            "relTo" : "O"
+          },
+          {
+            "letter" : "D",
+            "min" : 0.85,
+            "max" : 0.95,
+            "relTo" : "G"
+          },
+          {
+            "letter" : "U",
+            "min" : 0.86,
+            "max" : 0.95,
+            "relTo" : "H"
+          },
+          {
+            "letter" : "C",
+            "min" : 0.85,
+            "max" : 1,
+            "relTo" : "D"
+          },
+          {
+            "letter" : "A",
+            "min" : 0.65,
+            "max" : 0.8,
+            "relTo" : "W"
+          },
+          {
+            "letter" : "V",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "A"
+          },
+          {
+            "letter" : "K",
+            "min" : 7.9,
+            "max" : 9,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "Z",
+            "min" : 0.9,
+            "max" : 0.97,
+            "relTo" : "V"
+          },
+          {
+            "letter" : "X",
+            "min" : 0.95,
+            "max" : 1,
+            "relTo" : "Z"
+          },
+          {
+            "letter" : "B",
+            "min" : 7.4,
+            "max" : 7.9,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "R",
+            "min" : 0.9,
+            "max" : 1.1,
+            "relTo" : "B"
+          },
+          {
+            "letter" : "Y",
+            "min" : 0.95,
+            "max" : 1,
+            "relTo" : "Z"
+          },
+          {
+            "letter" : "E",
+            "min" : 0.9,
+            "max" : 1,
+            "relTo" : "B"
+          },
+          {
+            "letter" : "S",
+            "min" : 0.85,
+            "max" : 1,
+            "relTo" : "B"
+          },
+          {
+            "letter" : "T",
+            "min" : 6,
+            "max" : 8.2,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "P",
+            "min" : 0.86,
+            "max" : 1,
+            "relTo" : "B"
+          },
+          {
+            "letter" : "F",
+            "min" : 0.8,
+            "max" : 1,
+            "relTo" : "E"
+          },
+          {
+            "letter" : "L",
+            "min" : 0.83,
+            "max" : 1,
+            "relTo" : "F"
+          },
+          {
+            "letter" : "J",
+            "min" : 4.3,
+            "max" : 6,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "I",
+            "min" : 2.9,
+            "max" : 4,
+            "relTo" : "stemThickness"
+          }
+        ],
+        "lowercase" : [
+          {
+            "letter" : "w",
+            "min" : 9.5,
+            "max" : 13,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "m",
+            "min" : 0.98,
+            "max" : 1,
+            "relTo" : "w"
+          },
+          {
+            "letter" : "b",
+            "min" : 7.3,
+            "max" : 10.2,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "d",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "b"
+          },
+          {
+            "letter" : "p",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "b"
+          },
+          {
+            "letter" : "q",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "b"
+          },
+          {
+            "letter" : "o",
+            "min" : 0.9,
+            "max" : 1,
+            "relTo" : "b"
+          },
+          {
+            "letter" : "g",
+            "min" : 7.3,
+            "max" : 8.3,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "e",
+            "min" : 0.9,
+            "max" : 0.94,
+            "relTo" : "o"
+          },
+          {
+            "letter" : "h",
+            "min" : 6.5,
+            "max" : 8.3,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "n",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "h"
+          },
+          {
+            "letter" : "u",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "h"
+          },
+          {
+            "letter" : "a",
+            "min" : 7.3,
+            "max" : 7.4,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "z",
+            "min" : 6.4,
+            "max" : 8.4,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "c",
+            "min" : 0.9,
+            "max" : 1,
+            "relTo" : "e"
+          },
+          {
+            "letter" : "y",
+            "min" : 0.9,
+            "max" : 1,
+            "relTo" : "z"
+          },
+          {
+            "letter" : "x",
+            "min" : 0.9,
+            "max" : 1,
+            "relTo" : "z"
+          },
+          {
+            "letter" : "v",
+            "min" : 0.95,
+            "max" : 1,
+            "relTo" : "x"
+          },
+          {
+            "letter" : "k",
+            "min" : 5.9,
+            "max" : 6.4,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "s",
+            "min" : 4.5,
+            "max" : 6.4,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "r",
+            "min" : 0.55,
+            "max" : 0.65,
+            "relTo" : "n"
+          },
+          {
+            "letter" : "f",
+            "min" : 3.4,
+            "max" : 4.5,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "t",
+            "min" : 3,
+            "max" : 4.6,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "i",
+            "min" : 2.9,
+            "max" : 3.7,
+            "relTo" : "stemThickness"
+          },
+          {
+            "letter" : "j",
+            "min" : 1,
+            "max" : 1,
+            "relTo" : "i"
+          },
+          {
+            "letter" : "l",
+            "min" : 2.8,
+            "max" : 3.7,
+            "relTo" : "stemThickness"
+          }
+
+        ]
+      }
+    ]
+  },
+  {
+    "id" : "quote",
+    "type": "quote",
+    "possibilites" : [
+      "Human beings cheat, computers make error.",
+      "We should embrace bits and parts of design that are inexplicable. Absoluteness is dangerous to believe in in one's creative work.",
+      "You need precursors to resist and react to, to have your own authority and position.",
+      "Necessity should be questioned up to a certain point, not all the way, for man-made culture is largely a luxury.",
+      "The idea is not to \"generate\" typefaces but rather to give elaborate restrictions one can work around.",
+      "It's to resist our impulses to do what's \"right\" all the time. You can be given something that doesn't feel \"right\" but you have to work with it.",
+      "Drawing a human but without suggesting specific race, age, gender, demographics.",
+      "Uncertainty and ever-changing possibility of randomness.",
+      "Abstract in a sense that within its fundamental limitation to be legible, its shapes are born out of physical, actual restrictions that are not from subjective interpretation of one person. However, this is not a method that is immovable throughout as in drawing of letters there has to be personal interpretation and ways to work around. It is a starting point but results will vary depending on the person who draws and also it will be perceived differently depending on a viewer. This is important part of the process.",
+      "Abstracting letters symbolically, attempts and charming failures of a human.",
+      "Abstract not in its final form, but rather for its concept.",
+      "No \"Intentional fallacy\" when there's no intention behind the letter shapes other than reacting to randomized restrictions.",
+      "Typefaces, letters are less subjected to intentional fallacy in terms of how they are perceived by general public as they are everywhere and almost always detached from \"original intention.\" It seems like a misunderstanding, unfortunate \"fate\" of typefaces or surprising bliss, emancipation of duties. Only type designers who want to revive old typefaces may look into \"the author\" of typefaces to be faithful to the original. In the end when it's a tool that can be openly (mis)used by anyone, does it need intentions at all?",
+      "Let algorithms and randomness lead the way of drawing a typeface and see how that takes you. Maybe not something appealing to our sensitive eyes but surprises are to come.",
+      "\"I\" as a designer, author shouldn't matter. Letters and typefaces are free to be reinterpreted regardless of my intention, as they already are but to make it not misunderstanding or \"false,\" I would like to make something that has no intention of being \"something\" other than direct result of algorithms. However, with human(\"I\") engagement this becomes ouroboros.",
+      "\"Thought\", which until the other day appeared to us as something fluid, evoking linear images such as a flowing river or an unwinding thread, or else gaseous images such as a kind of vaporous cloud-to the point where it was sometimes called \"spirit\" (in the sense of \"breath\")-we now tend to think of as a series of discontinuous states, of combinations of impulses acting on a finite (though enormous) number of sensory and motor organs. [...] The process going on today is the triumph of discontinuity, divisibility, and combination over all that is flux, or a series of minute nuances following one upon the other.\" —Italo Calvino",
+      "Jean Piaget, who would better define himself as constructivist, considers structuralism as \"a method and not a doctrine\" because for him \"there exists no structure without a construction, abstract or genetic\"",
+      "When the same shapes are translated, transported to different medium, is it really the same? A photo of an apple and drawing of the same apple in the same composition and lighting won't be the same. They might look the same from afar but their meanings aren't the same.",
+      "New restriction/system/tool = new form/result/inspiration",
+      "Last names do not make much sense these days. It is a formality without meaning or significance but somehow affecting an individual's life. It is a starting point of a sort but not the most significant factor in how an individual evolves.",
+      "What seems to be pervertedly limiting turns out to be liberating and eye-opening, as it forces me to start from something I wouldn't choose as starting point normally. After accepting what is given to me, I can interpret and play around the rules to make it my own. Interesting shift in authorship between indifferent random \"nature\" and a willful individual happens.",
+      "The attempt to strategically ignore historical, functional, connotative burdens letters carry can be attempted only because the burdens exist in the first place. It almost feels as if I'm meditating and constantly trying and telling myself to not think about anything when the conscious effort to not think about something is itself a thought. Moments when I'm not thinking are probably happening unnoticed.",
+      "What's funny about the whole process is constant revelation of holes in my attempts. Random numbers I get from the internet is in fact never truly random as such thing is impossible with computers, what seems to be strict restrictions are actually quite open-ended to be interpreted, what seems to be elaborate is actually as illogical as any other rationalization of letters. Slight adjustments and controls are needed in order to make it appear what it's trying to be.",
+      "Limitations of human and computer that I wanted to get away from always come back and become a large part of the result in an unexpected way. Human's limitation is our inability to get away from ourselves and our learned knowledges that make it impossible for us to see things in a new light, computer's limitation is its inability to do something out of what it's asked to do unless it's an error. When a human tries to fill in the inexplicable, mysterious gaps computer can't deal with, there's fundamental intrusion of knowledges and burdens from the person.",
+      "Randomness is generally a hard task both for humans and computers. Magic, rock-paper-scissors, general psychological studies are depending on predictability of human beings. We are subject to our own patterns and behaviors as much as computers do.",
+      "To think even further about randomness, maybe things appear random to us because we can't/don't/won't understand all the events and phenomena. There may be underlying logic and structure behind everything but we simply cannot decode all of them so we label those as \"random.\"",
+      "It's more intriguing to fail at something I don't know well than to do something I already know and succeed.",
+      "It's not in the restrictions themselves but rather how you use seemingly-limited freedom.",
+      "Hypothesis — design a \"device (system)\" to test — conclusion.",
+      "Randomization serves two purposes: to have a mixture of independent factors that are not faithful to specific references, and to have a starting point that is not so much dictated by one's own taste and inclinations.",
+      "Randomized system has importance of about 30% as it is a starting point and structure but it is not something that should limit you. It should emancipate you from being faithful to something you think as \"right\" and lead you to unexpected results. The end result obviously shows personal touches and decision making which maybe has importance of about 60%. What is the remaining 10%? Mysterious uncertainty and chemical interactions happening in every steps of the process.",
+      "Is anything ever \"finished?\"",
+      "I value one's self-satisfaction in creating something as primary driving force, other purposes such as serving others, making betterment, fixing problems, etc., being secondary.",
+      "Inconvenient, inefficient way of doing and thinking on purpose to get oneself out of a default setting.",
+      "Forms of language are social institution created and morphed by different groups of people. There is no hierarchy of importance among them regardless of their creation and evolution. All forms of language matter.",
+      "Context is everything, and because it is everything no such thing as unimportant or inappropriate at all times/important or appropriate at all times. Everything can serve a purpose and nothing can serve all purposes.",
+      "Rationalizing construction of letters and \"mathematically\" approaching to forms of language are delusional and obsessed attempts. Forms of language are complex and hard to pin down because they are largely arbitrary in their nature. They are not necessarily crafted in a way to be the most effective and universal. They are empirical and amorphous.",
+      "But attempts and obsession always lead to some sort of revelations, lessons, surprises…",
+      "Trying to make sense of nonsensical approach to type.",
+      "Countless errors and mistakes in the process of trying to define numerical parameters of shapes. The premise itself is absurd but it's acceptable, in the end drawing is the result, not the numbers.",
+      "Letters are never perfect.",
+      "Never be certain that you KNOW something and dwell in that state. Constant unlearning, refreshing your knowledges and beliefs should be a routine.",
+      "Do historical links and styles matter in a choice of typefaces as a way to communicate something connotative when most general public aren't aware of such implications?",
+      "There are no facts, only opinions.",
+      "You don't need to understand everything.",
+      "There's benefit of leaving room for ambiguity.",
+      "Nothing is fixated for a person to understand. Everything constantly changes, even ourselves.",
+      "Forms always mean something but never one thing.",
+      "Illusions of control."
+    ]
+  }
+]

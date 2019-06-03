@@ -1,0 +1,156 @@
+{
+  "letter" : "w",
+  "min" : 9.5,
+  "max" : 13,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "m",
+  "min" : 0.98,
+  "max" : 1,
+  "relTo" : "w"
+},
+{
+  "letter" : "b",
+  "min" : 7.3,
+  "max" : 10.2,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "d",
+  "min" : 1,
+  "max" : 1,
+  "relTo" : "b"
+},
+{
+  "letter" : "p",
+  "min" : 1,
+  "max" : 1,
+  "relTo" : "b"
+},
+{
+  "letter" : "q",
+  "min" : 1,
+  "max" : 1,
+  "relTo" : "b"
+},
+{
+  "letter" : "o",
+  "min" : 0.9,
+  "max" : 1,
+  "relTo" : "b"
+},
+{
+  "letter" : "g",
+  "min" : 7.3,
+  "max" : 8.3,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "e",
+  "min" : 0.9,
+  "max" : 0.94,
+  "relTo" : "o"
+},
+{
+  "letter" : "h",
+  "min" : 6.5,
+  "max" : 8.3,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "n",
+  "min" : 1,
+  "max" : 1,
+  "relTo" : "h"
+},
+{
+  "letter" : "u",
+  "min" : 1,
+  "max" : 1,
+  "relTo" : "h"
+},
+{
+  "letter" : "a",
+  "min" : 7.3,
+  "max" : 7.4,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "z",
+  "min" : 6.4,
+  "max" : 8.4,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "c",
+  "min" : 0.9,
+  "max" : 1,
+  "relTo" : "e"
+},
+{
+  "letter" : "y",
+  "min" : 0.9,
+  "max" : 1,
+  "relTo" : "z"
+},
+{
+  "letter" : "x",
+  "min" : 0.9,
+  "max" : 1,
+  "relTo" : "z"
+},
+{
+  "letter" : "v",
+  "min" : 0.95,
+  "max" : 1,
+  "relTo" : "x"
+},
+{
+  "letter" : "k",
+  "min" : 5.9,
+  "max" : 6.4,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "s",
+  "min" : 4.5,
+  "max" : 6.4,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "r",
+  "min" : 0.55,
+  "max" : 0.65,
+  "relTo" : "n"
+},
+{
+  "letter" : "f",
+  "min" : 3.4,
+  "max" : 4.5,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "t",
+  "min" : 3,
+  "max" : 4.6,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "i",
+  "min" : 2.9,
+  "max" : 3.7,
+  "relTo" : "stemThickness"
+},
+{
+  "letter" : "j",
+  "min" : 1,
+  "max" : 1,
+  "relTo" : "i"
+},
+{
+  "letter" : "l",
+  "min" : 2.8,
+  "max" : 3.7,
+  "relTo" : "stemThickness"
+}

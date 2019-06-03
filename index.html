@@ -1,0 +1,331 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div id="container">
+    <div id="topButtons" class="row">
+      <span id="randomizer">[GET RANDOM VALUES]</span> |
+      <span id="seeMinMax">[SEE MIN/MAX EXTENT]</span> |
+      <span id="statementLink"><a href="#statement">[STATEMENT]</a></span>
+    </div>
+
+    <div class="row">
+      *strikethrough means invalid
+    </div>
+
+    <div class="row underlined width3">
+      <div class="option">
+        <div class="label">
+          stem thickness
+        </div>
+        <div class="value" id="stemThickness">
+
+        </div>
+      </div>
+      <div class="option">
+        <div class="label">
+          stem concave/convex
+        </div>
+        <div class="yesno" id="stemConcave">
+          <span class="optionClosed">no</span>
+          <span class="optionOpen">yes</span>
+        </div>
+      </div>
+      <div class="option move">
+        <br>
+        <div class="label">
+          concaved/convexed s.t.
+        </div>
+        <div class="value" id="stemConcaveSub">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width2">
+      <div class="option">
+        <div class="label">
+          s.t. contrast
+        </div>
+        <div class="yesno" id="stContrast">
+          <span class="optionClosed">no</span>
+          <span class="optionOpen">yes</span>
+        </div>
+      </div>
+      <div class="option move">
+        <br>
+        <div class="label">
+          contrasted s.t.
+        </div>
+        <div class="value" id="contrastedSt">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width2">
+      <div class="option">
+        <div class="label">
+          axis
+        </div>
+        <div class="yesno" id="axis">
+          <span class="optionClosed">no</span>
+          <span class="optionOpen">yes</span>
+        </div>
+      </div>
+      <div class="option move">
+        <br>
+        <div class="label">
+          axis extent<sup>1</sup>
+        </div>
+        <div class="value" id="axisExtent">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width2">
+      <div class="option">
+        <div class="label">
+          slant
+        </div>
+        <div class="yesno" id="slant">
+          <span class="optionClosed">no</span>
+          <span class="optionOpen">yes</span>
+        </div>
+      </div>
+      <div class="option move">
+        <br>
+        <div class="label">
+          slant extent<sup>1</sup>
+        </div>
+        <div class="value" id="slantExtent">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          x-height
+        </div>
+        <div class="value" id="xHeight">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          cap height
+        </div>
+        <div class="value" id="capHeight">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          descender size
+        </div>
+        <div class="value" id="descenderSize">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          ascender size
+        </div>
+        <div class="value" id="ascenderSize">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width4">
+      <div class="option">
+        <div class="label">
+          serif
+        </div>
+        <div class="yesno" id="serif">
+          <span class="optionClosed">no</span>
+          <span class="optionOpen">yes</span>
+        </div>
+      </div>
+      <div class="option move">
+        <br>
+        <div class="innerRow">
+          <div class="label">
+            serif width<sup>2</sup>
+          </div>
+          <div class="value" id="serifWidth">
+          </div>
+        </div>
+        <div class="innerRow">
+          <div class="label">
+            serif height
+          </div>
+          <div class="value" id="serifHeight">
+          </div>
+        </div>
+        <div class="innerRow">
+          <div class="label">
+            slab serif
+          </div><div class="yesno" id="slabSerif">
+            <span class="optionOpen">no</span><br><br>
+            <span class="optionClosed">yes</span>
+          </div>
+        </div>
+      </div>
+      <div class="option move">
+        <br>
+        <br>
+        <br>
+        <div class="innerRow">
+          <div class="label">
+            serif starting point on stem<sup>3</sup>
+          </div>
+          <div class="value" id="serifStarting">
+          </div>
+        </div>
+
+        <div class="innerRow">
+          <div class="label">
+            another serif width
+          </div><div class="yesno" id="aSerifWidth">
+            <span class="optionClosed">no</span>
+            <span class="optionOpen">yes</span>
+          </div>
+        </div>
+      </div>
+      <div class="option">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="label">
+          bigger width
+        </div>
+        <div class="yesno" id="biggerWidth">
+          <span class="optionClosed">top</span>
+          <span class="optionOpen">bottom</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          i dot width
+        </div>
+        <div class="value" id="iDotWidth">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          i dot height
+        </div>
+        <div class="value" id="iDotHeight">
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          a story
+        </div>
+        <div class="yesno" id="aStory">
+          <span class="optionClosed">single</span>
+          <span class="optionOpen">double</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width1">
+      <div class="option">
+        <div class="label">
+          g story
+        </div>
+        <div class="yesno" id="gStory">
+          <span class="optionClosed">single</span>
+          <span class="optionOpen">double</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row underlined width4">
+      <div class="option">
+        <div class="label">
+          width<sup>4</sup>
+        </div>
+        <div class="value" id="width">
+        </div>
+      </div>
+      <div class="option widths">
+        <div class="uppercase">
+        </div>
+        <div class="lowercase">
+        </div>
+      </div>
+      <div class="option quote">
+        <span id="quote">
+        </span>
+      </div>
+    </div>
+    <div class="row underlined" id="footerContainer">
+      <div id="footerPlaceholder">
+      </div>
+      <div id="footer">
+        <div class="option">
+          {notes}<br>
+          x.h. = x-height<br>
+          s.h. = serif height<br>
+          s.w. = serif width<br>
+          s.t. = stem thickness<br>
+          c.s.t = contrast stem thickness<br>
+        </div>
+        <div class="option" style="width: 400px;">
+          <br>
+          <sup>1</sup> 0&deg; is perpendicular to baseline<br>
+          <sup>2</sup> s.t. is replaced if c.s.t. is bigger<br>
+          <sup>3</sup> starting point is measured from bottom<br>
+          <sup>4</sup> width includes letterwidth and sidebearings<br>
+        </div>
+      </div>
+    </div>
+    <div class="row underlined width2">
+      <div class="option statement" id="statement">
+        <p>There are several different approaches to starting a typeface. Common starting points are looking into history (likely "revivals"), thinking based on specific usages (printing technique, platform, size of type, etc), and one's intuition (largely influenced by the individual, their experiences and tastes). In many cases all three approaches are taken to make a typeface. However, all these are in a way elaborate excuses to start drawing something. Designers need restrictions in order to dictate their macro/micro decisions and without a clear restriction there can be sense of being lost, being self-centered, copying oneself, dwelling in one's comfort zone, futility, and many other forms of doubts. Designers need to remind themselves from time to time in the midst of believing that design is for others that it's for one's own satisfaction ultimately. Be it fulfilling moments of solving problems, making betterment, achieving "beauty," satisfying paying clients, getting compliments, etc. It is more so when a number of factors around a typeface askew viewers from seeing a typeface as the designer wanted it to be. Firstly, context can change meanings of forms of language in innumerable ways visually, culturally, temporally. Secondly, each individual has idiosyncratic way of perceiving and is free to interpret anything in their own way. Thirdly, a typeface is surrounded by other design elements all the time and duty to make the typeface work is passed onto someone else other than the type designer, which exposes the typeface to be recreated in a way. </p>
+        <p>Therefore, with the combined sentiment of longing for a way to start drawing letters that are not assuming to be "something specific," and longing to escape from one's perpetual sense of being trapped in their own world, randomness came as a way to approach. Deconstructed parts of letters are given values by randomness from computer so the combined result of numbers often suggest strange shapes. It is human's work to sew these parts together and make it somehow work. It comes in full circle as in the end with human engagement in drawing it shows personal tastes, experiences, knowledge, etc. The system means more as a starting point not a rigid doctrine that one MUST follow at all times as small optical adjustments and cheating are forgivable. Without the burden of representing something, or solving something with letter shapes, the system allows more freedom than it seems as there's no "correct" way of drawing letters.</p>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="option statement">
+        &copy;Sohee Kim 2019<br>
+        website developed by Callum Ross<br><br>
+        There are no visual illustrations on this website to minimize affecting designers on what letters can be.
+      </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+</body>
+
+<script src="randomizer.js"></script>
+</html>
