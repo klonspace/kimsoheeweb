@@ -9,47 +9,67 @@ html, body {
   margin: 0px;
 
 }
-#container {
+#topButtons {
+  font-family: "Times New Roman";
+  font-size: 15px;
+  position: fixed;
+  background-color: white;
   padding: 20px;
+  z-index: 30;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+#container {
+  margin-top: 55px;
+  padding: 20px;
+  padding-top: 0;
   box-sizing: border-box;
   width: 100%;
   font-family: GTAmerica;
   font-size: 0px;
+  opacity: 0;
+  transition: opacity 500ms;
 }
-#topButtons {
-  font-family: Times;
-
-  font-size: 12px;
+#container.visible {
+  opacity: 1;
 }
-#randomizer {
+#randomizer, #seeMinMax, #statementLink, #print  {
   cursor: pointer;
+  transition: letter-spacing 200ms;
 }
-#randomizer:hover {
-  letter-spacing: 0.05em;
+#randomizer:hover, #seeMinMax:hover, #statementLink:hover, #print:hover {
+  letter-spacing: 0.3em;
 }
-#seeMinMax {
-  cursor: pointer;
+#randomizer.selected, #seeMinMax.selected, #statementLink.selected {
+  text-decoration: underline;
 }
-#seeMinMax:hover {
-  letter-spacing: 0.05em;
-}
-#statementLink {
-  cursor: pointer;
-}
-#statementLink:hover {
-  letter-spacing: 0.05em;
-}
-#statementLink a {
+#statementLink a, #print {
   color: black;
   text-decoration: none;
 }
+#print {
+  position: absolute;
+  right: 20px;
+  opacity: 0;
+  transition: opacity 200ms, letter-spacing 200ms;
+}
+#print.visible {
+  opacity: 1;
+}
+
 .row {
   margin-bottom: 5px;
 }
+#indication {
+  font-size: 12px;
+  margin-bottom: 24px;
+}
 
 .underlined::after {
-  content: "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
-  width: 100%;
+  content: "\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014\02014";
+  width: calc(100% - 8px);
   margin-top: 5px;
   display:block;
   overflow: hidden;
@@ -57,50 +77,51 @@ html, body {
   font-size: 12px;
 }
 .width1 {
-  width: 300px;
+  width: calc((100vw - 40px) / 4);
 }
 .width2 {
-  width: 600px;
+  width: calc((100vw - 40px) / 2);
 }
 .width3 {
-  width: 900px;
+  width: calc(3 * (100vw - 40px) / 4);
 }
 .width4 {
-  width: 1200px;
+  width: calc(100vw - 40px);
 }
 .option {
   position: relative;
   display: inline-block;
-  width: 300px;
+  width: calc( -16px + (100vw - 40px) / 4);
+  margin-right: 16px;
   vertical-align: top;
 
 }
 .option.statement {
   width: 450px;
-
-    font-size: 12px;
+  font-family: "Times New Roman";
+  font-size: 15px;
+  hyphens: auto;
 }
 .option .label {
   vertical-align: top;
-  width: 150px;
+  width: calc(-8px + (100vw - 40px) / 8);
   display: inline-block;
   font-size: 12px;
 }
 .quote {
-  margin-left: -20px;
+  /*margin-left: -20px;*/
 }
 #quote {
-
-  font-size: 12px;
+  font-family: "Times New Roman";
+  font-size: 15px;
 }
 .option.widths {
   font-size: 0px;
-  width: 400px;
 }
 .option .uppercase, .option .lowercase {
-  width: 160px;
   display: inline-block;
   font-size: 12px;
+  width: calc(-8px + (100vw - 40px) / 8);
 }
 .option>div {
   display: inline-block;
@@ -129,46 +150,75 @@ br {
   text-decoration: line-through;
 }
 
+#container>.row:last-of-type {
+  margin-bottom: 0px;
+}
 #footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0px;
   width: 100%;
   z-index: 100;
-  font-size: 12px;
-}
-#footer.floating {
-  position: fixed;
 
   background-color: white;
   padding: 20px;
+  box-sizing: border-box;
 }
 #footerContainer {
   position: relative;
   margin-bottom: 20px;
 }
-#footerContainer::after {
-  content: "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
-  width: 100%;
-  margin-top: 5px;
-  display:block;
-  overflow: hidden;
-  height: 12px;
-  font-size: 12px;
-  position: absolute;
-  bottom: -20px;
-}
+
 #footerPlaceholder {
   position: absolute;
   width: 100%;
+}
+#footerContainer .option {
+
+  font-size: 12px;
+}
+#statementPart {
+  font-size: 12px;
+  position: fixed;
+  background-color: white;
+  padding: 20px;
+  padding-top: 0px;
+  z-index: 30;
+  width: 100%;
+  top: 52px;
+  left: 0;
+  opacity: 0;
+  transition: opacity 500ms;
+  pointer-events: none;
+}
+#statementPart.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#statementPart p:first-of-type {
+  margin-top: 0px;
+}
+.option.credits {
+  font-size: 12px;
+  width: calc((100vw - 40px) / 2);
+  font-family: GTAmerica;
 }
 
 sup, sub {
   vertical-align: baseline;
   position: relative;
   top: -0.4em;
-  text-decoration: none;
+  text-decoration: none!important;
 }
 sub {
   top: 0.4em;
+}
+
+@media print {
+  #topButtons {
+    display: none;
+  }
+  #container {
+    margin-top: 0px;
+  }
 }

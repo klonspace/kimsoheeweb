@@ -7,6 +7,13 @@ fetch('dataSet.json')
   initRandomize()
 })
 .catch(error => console.error(error))
+
+function selectLink(id) {
+  document.getElementById("randomizer").classList.remove("selected");
+  document.getElementById("seeMinMax").classList.remove("selected");
+  document.getElementById("statementLink").classList.remove("selected");
+  document.getElementById(id).classList.add("selected");
+}
 function emptyEverything() {
   document.querySelectorAll(".strike").forEach(function(elem) {
     elem.classList.remove("strike");
@@ -21,11 +28,25 @@ function emptyEverything() {
 function initRandomize() {
   emptyEverything();
   randomize(dataSet);
+
+  selectLink("randomizer");
+  document.getElementById("print").classList.add("visible");
+  document.getElementById("container").classList.add("visible");
+  document.getElementById("statementPart").classList.remove("visible");
+
+  document.getElementById("indication").innerHTML = "*strikethrough means invalid";
 }
 
 function explainEverything() {
   emptyEverything();
   explain(dataSet);
+
+  selectLink("seeMinMax");
+  document.getElementById("container").classList.add("visible");
+  document.getElementById("print").classList.remove("visible");
+  document.getElementById("statementPart").classList.remove("visible");
+
+  document.getElementById("indication").innerHTML = "*all numbers are rounded up without decimal points";
 }
 
 function randomize(selection) {
@@ -33,12 +54,21 @@ function randomize(selection) {
     console.log("randomizing : "+selection[i].id)
     if(selection[i].type == "vRange") {
       let value;
-      if(selection[i].relTo) {
-        var relToValue = getReltoValue(dataSet, selection[i].relTo);
-        selection[i].value = Math.floor(relToValue*Math.random()*(selection[i].max-selection[i].min)+selection[i].min);
+      if(selection[i].cantBe) {
+        value = selection[i].cantBe;
+        while(Math.floor(value*100) == selection[i].cantBe*100) {
+          value = Math.random()*(selection[i].max-selection[i].min)+selection[i].min;
+        }
       }
       else {
-        selection[i].value = Math.floor(Math.random()*(selection[i].max-selection[i].min)+selection[i].min);
+        value = Math.random()*(selection[i].max-selection[i].min)+selection[i].min;
+      }
+      if(selection[i].relTo) {
+        var relToValue = getReltoValue(dataSet, selection[i].relTo);
+        selection[i].value = Math.floor(relToValue*value);
+      }
+      else {
+        selection[i].value = Math.floor(value);
       }
       document.getElementById(selection[i].id).innerHTML = selection[i].value;
       if(selection[i].append)
@@ -203,19 +233,31 @@ document.getElementById("randomizer").addEventListener("click", function() {
 document.getElementById("seeMinMax").addEventListener("click", function() {
   explainEverything();
 });
+document.getElementById("statementLink").addEventListener("click", function() {
+  document.getElementById("container").classList.remove("visible");
+  document.getElementById("statementPart").classList.add("visible");
+  document.getElementById("print").classList.remove("visible");
 
-document.getElementById("footerPlaceholder").style.height = document.getElementById("footer").getBoundingClientRect().height+"px";
+  selectLink("statementLink");
+});
+var style = window.getComputedStyle(document.getElementById("footer"), null);
+var footerHeight = style.getPropertyValue("height");
+console.log(footerHeight)
 
-document.getElementById("footerContainer").style.height = document.getElementById("footer").getBoundingClientRect().height+"px";
+document.getElementById("footerPlaceholder").style.height = (parseInt(footerHeight)-40)+"px";
 
-function checkFooterPlacement() {
-  if(document.getElementById("footerContainer").getBoundingClientRect().top + window.pageYOffset + 20 >
-  window.pageYOffset+window.innerHeight-document.getElementById("footerContainer").getBoundingClientRect().height) {
-    document.getElementById("footer").classList.add("floating");
-  }
-  else {
-    document.getElementById("footer").classList.remove("floating");
-  }
-  requestAnimationFrame(checkFooterPlacement)
+document.getElementById("footerContainer").style.height = (parseInt(footerHeight)-40)+"px";
+
+
+function print(quality = 1) {
+	var filename  = 'ThisIsYourPDFFilename.pdf';
+
+	html2canvas(document.querySelector('#container'),
+							{scale: quality}
+					 ).then(canvas => {
+             document.body.appendChild(canvas)
+		let pdf = new jsPDF('p', 'mm', [421, 298]);
+		pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 421, 298);
+		pdf.save(filename);
+	});
 }
-checkFooterPlacement();
